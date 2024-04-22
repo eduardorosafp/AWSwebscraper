@@ -1,14 +1,23 @@
-// serverless.ts
-
 import type { AWS } from "@serverless/typescript";
+import * as dotenv from "dotenv";
 
-const serverlessConfiguration: AWS = {
+dotenv.config();
+
+interface CustomAWS extends AWS {
+  provider: AWS["provider"] & {
+    accessKeyId?: string;
+    secretAccessKey?: string;
+  };
+}
+
+const serverlessConfiguration: CustomAWS = {
   service: "BGCWebScraper",
   frameworkVersion: "3",
   plugins: ["serverless-esbuild"],
   provider: {
-    name: "aws",
-    runtime: "nodejs14.x",
+    name: "aws", 
+    region: "us-east-2",
+    runtime: "nodejs20.x",
     apiGateway: {
       minimumCompressionSize: 1024,
       shouldStartNameWithService: true,
@@ -17,6 +26,8 @@ const serverlessConfiguration: AWS = {
       AWS_NODEJS_CONNECTION_REUSE_ENABLED: "1",
       NODE_OPTIONS: "--enable-source-maps --stack-trace-limit=1000",
     },
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID || "",
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY || "",
   },
   functions: {},
   package: { individually: true },
@@ -33,7 +44,5 @@ const serverlessConfiguration: AWS = {
     },
   },
 };
-
-
 
 export default serverlessConfiguration;
