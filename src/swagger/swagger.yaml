@@ -1,0 +1,29 @@
+swagger: "2.0"
+info:
+  version: "1.0.0"
+  title: "Amazon Best Sellers API"
+paths:
+  /products:
+    get:
+      summary: "Get the three top best selling products from Amazon"
+      produces:
+        - "application/json"
+      responses:
+        200:
+          description: "Successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Product"
+        500:
+          description: "Internal Server Error"
+definitions:
+  Product:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+      price:
+        type: "string"
+      link:
+        type: "string"

@@ -1,10 +1,11 @@
 {
-  "name": "nome-do-seu-projeto",
+  "name": "BGCWebScraper",
   "version": "1.0.0",
   "description": "Serverless aws-nodejs-typescript template",
   "main": "serverless.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "ts-node src/app.ts"
   },
   "engines": {
     "node": ">=14.15.0"
