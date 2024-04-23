@@ -1,3 +1,45 @@
+## BGCWebScraper
+
+# Sobre o Projeto
+
+O BGCWebScraper é um serviço desenvolvido para extrair dados de websites específicos e armazená-los em um banco de dados na nuvem da AWS. Este projeto utiliza o Serverless Framework para criar e implantar os recursos na AWS de forma automatizada.
+
+## Como funciona
+
+O serviço funciona da seguinte maneira:
+
+- Um web scraper é acionado para visitar websites específicos e extrair dados relevantes.
+- Os dados extraídos são armazenados em um banco de dados DynamoDB na AWS.
+- Uma API HTTP é disponibilizada para acessar e manipular os dados armazenados no banco de dados.
+
+## Pré-requisitos
+
+Para executar este projeto, você precisa ter o seguinte configurado em seu ambiente de desenvolvimento:
+
+- Node.js 
+- Serverless Framework 
+- Conta na AWS com permissões adequadas para criar recursos como DynamoDB e IAM roles
+
+## Instalacao e configuracao
+
+1 - Clone o repositório:
+
+2 - Instale as dependências do projeto:
+
+npm install
+
+Configure suas credenciais AWS no  arquivo serverless.yml e no SDK do AWS.
+
+### TESTES
+
+- Rode o comando jest para rodar os testes unitarios. 
+
+## Swegger
+
+- Para uma documentacao mais limpa do codigo, utilizei as libs do swegger-UI para criar um documento de referencia das rotas da api.  
+
+### COMO USAR O SERVERLESS
+
 # Serverless - AWS Node.js Typescript
 
 This project has been generated using the `aws-nodejs-typescript` template from the [Serverless framework](https://www.serverless.com/).
