@@ -1,11 +1,12 @@
 service: BGCWebScraper
+
 frameworkVersion: "3"
 
 plugins:
   - serverless-esbuild
 
 custom:
-  tableName: "ProductsTable-${sls:stage}"
+  tableName: "ProductsTable-Dev4-${sls:stage}"
   esbuild:
     bundle: true
     minify: false
@@ -14,13 +15,26 @@ provider:
   name: aws
   region: us-east-2
   runtime: nodejs14.x
+  iam:
+    role:
+      statements:
+        - Effect: "Allow"
+          Action:
+            - "dynamodb:Query"    
+            - "dynamodb:Scan"
+            - "dynamodb:GetItem"
+            - "dynamodb:PutItem" 
+            - "dynamodb:UpdateItem"
+            - "dynamodb:DeleteItem"
+            - "dynamodb:DescribeTable"
+            - "dynamodb:CreateTable"
+          Resource: 
+            - "arn:aws:dynamodb:us-east-2:891377055217:table/${self:custom.tableName}"
   apiGateway:
     minimumCompressionSize: 1024
     shouldStartNameWithService: true
   environment:
-    AWS_NODEJS_CONNECTION_REUSE_ENABLED: "1"
-    NODE_OPTIONS: "--enable-source-maps --stack-trace-limit=1000"
-    PRODUCTS_TABLE: ${self:custom.tableName}
+    USERS_TABLE: ${self:custom.tableName}
 
 functions:
   getProducts:
@@ -33,7 +47,7 @@ functions:
 resources:
   Resources:
     ProductsTable:
-      Type: AWS::DynamoDB::Table
+      Type: "AWS::DynamoDB::Table"
       Properties:
         TableName: ${self:custom.tableName}
         AttributeDefinitions:
