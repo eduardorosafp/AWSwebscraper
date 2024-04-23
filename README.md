@@ -38,6 +38,8 @@ Configure suas credenciais AWS no  arquivo serverless.yml e no SDK do AWS.
 
 - Para uma documentacao mais limpa do codigo, utilizei as libs do swegger-UI para criar um documento de referencia das rotas da api.  
 
+![Logo](./src/assets/swegger.png)
+
 ### COMO USAR O SERVERLESS
 
 # Serverless - AWS Node.js Typescript
