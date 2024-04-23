@@ -3,7 +3,9 @@ import puppeteer from "puppeteer";
 async function scrapeAmazonBestSellers() {
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
-  await page.goto("https://www.amazon.com.br/bestsellers");
+  await page.goto(
+    "https://www.mithoficial.com.br/homens/compre-por-linha/mith-army/"
+  );
 
   const products = await page.evaluate(() => {
     const productList = Array.from(
@@ -17,6 +19,7 @@ async function scrapeAmazonBestSellers() {
       return { name, price, link };
     });
   });
+  // console.log(products)
 
   await browser.close();
   return products;
