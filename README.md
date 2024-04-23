@@ -34,7 +34,7 @@ Configure suas credenciais AWS no  arquivo serverless.yml e no SDK do AWS.
 
 - Rode o comando jest para rodar os testes unitarios.
 
-### Branchs
+### Branches
 
 - Por questoes de organizacao e por nao ser correto commitar diretamente na main, criei uma branch separada para as features que fiz. 
 
