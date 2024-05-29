@@ -1,4 +1,4 @@
-## BGCWebScraper
+## AWSWebScraper
 
 # Sobre o Projeto
 
